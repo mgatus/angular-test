@@ -1,0 +1,63 @@
+<h1 [style.color]="titleStyle ? 'green' : 'pink'" >
+  {{title}}
+  <input type="number" [(ngModel)]="idUser" (keyup)="returnOfTheKing()">
+  <div *ngIf="errorStatus" class="ErrorStatus"><img src="http://cdn.hitfix.com/photos/6257188/Itballoon.jpg" alt=""></div>
+  <ul>
+    <li *ngFor="let laman of ninjas">
+      <div class="name"><strong>ID:</strong> {{ laman.id }}</div>
+      <div class="name"><strong>NAME:</strong> {{ laman.name }}</div>
+      <div class="name"><strong>USERNAME:</strong> {{ laman.username }}</div>
+      <div class="name"><strong>EMAIL:</strong> <a href="mailto: {{laman.email}}">{{ laman.email }}</a></div>
+      <div class="name"><strong>ADDRESS:</strong> {{ laman.address.street }} , {{ laman.address.suite }}, {{ laman.address.city }}, {{ laman.address.zipcode }}</div>
+      <div class="name"><strong>PHONE:</strong> {{ laman.phone }}</div>
+      <div class="name"><strong>WEBSITE:</strong> {{ laman.website }}</div>
+      <div class="name"><strong>COMPANY: </strong>{{ laman.company.name }}</div>
+      <div class="name"><strong>CATCHPHRASE: </strong>{{ laman.company.catchPhrase }}</div>
+      <div class="name"><strong>BS : </strong>{{ laman.company.bs }}</div>
+    </li>
+  </ul>
+</h1>
+
+<img [src]="angularLogo" alt="" (click)="enableTheDisable()">
+
+<button [ngStyle]="objectStyle" [disabled]="testTr" (click)="myClickEvent()">Regular Button</button>
+
+<button [class]="objectClass" [disabled]="testTr" (click)="myClickEvent()">Far Button</button>
+
+<button [ngClass]="objectClasses" [disabled]="testTr" (click)="myClickEvent()">BIG BUTTON</button>
+
+
+
+<ul>
+  <li>{{myObject.gender}}</li>
+  <li>{{myObject.age}}</li>
+  <li>{{myObject.location}}</li>
+</ul>
+
+<p>
+  <strong [class]="hobbitsShire">{{ propers }}</strong>
+</p>
+
+<ul>
+  <li *ngFor="let arr of myArr2">{{ arr.gender }} {{arr.age}} {{arr.location}}</li>
+</ul>
+
+
+
+<ul>
+  <li *ngFor="let hobbit of hobbits">{{ hobbit }}</li>
+</ul>
+
+<div *ngIf="!myArr">Yeah my Arr exist!</div>
+
+<div *ngIf="booleanCheck == 'something'">Yeah Boolean is true!</div>
+
+<div *ngIf="testTr; then newGandalf else oldGandalf">Yeah Boolean is true!</div>
+
+<ng-template #newGandalf>You shall pass!</ng-template>
+
+<ng-template #oldGandalf>You shall not pass!</ng-template>
+
+<p class="vegeta" [@triggeredAnimation]='state' (click)="runAnimate()">BOOM! Animation</p>
+
+<app-new-component></app-new-component>
