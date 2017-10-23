@@ -3,7 +3,7 @@ h1 {
 }
 
 .maincolor {
-  color: blue
+  color: #3f51b5
 }
 
 .objectClass {
@@ -24,11 +24,31 @@ h1 {
 }
 
 .hobbitsShire {
-  font-size: 12rem;
+  font-size: 5rem;
+  margin: 1% 0
 }
 
 .vegeta {
   background: grey;
   color: #fff;
-  padding: 15px
+  padding: 15px;
+  margin: 2% 0;
+}
+
+.example-header-image img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.mat-card-content .name {
+  padding: 2% 0
+}
+
+.mat-card-content .name a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.example-card {
+  width: 400px;
 }

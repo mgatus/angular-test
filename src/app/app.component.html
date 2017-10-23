@@ -1,63 +1,133 @@
-<h1 [style.color]="titleStyle ? 'green' : 'pink'" >
-  {{title}}
-  <input type="number" [(ngModel)]="idUser" (keyup)="returnOfTheKing()">
-  <div *ngIf="errorStatus" class="ErrorStatus"><img src="http://cdn.hitfix.com/photos/6257188/Itballoon.jpg" alt=""></div>
-  <ul>
-    <li *ngFor="let laman of ninjas">
-      <div class="name"><strong>ID:</strong> {{ laman.id }}</div>
-      <div class="name"><strong>NAME:</strong> {{ laman.name }}</div>
-      <div class="name"><strong>USERNAME:</strong> {{ laman.username }}</div>
-      <div class="name"><strong>EMAIL:</strong> <a href="mailto: {{laman.email}}">{{ laman.email }}</a></div>
-      <div class="name"><strong>ADDRESS:</strong> {{ laman.address.street }} , {{ laman.address.suite }}, {{ laman.address.city }}, {{ laman.address.zipcode }}</div>
-      <div class="name"><strong>PHONE:</strong> {{ laman.phone }}</div>
-      <div class="name"><strong>WEBSITE:</strong> {{ laman.website }}</div>
-      <div class="name"><strong>COMPANY: </strong>{{ laman.company.name }}</div>
-      <div class="name"><strong>CATCHPHRASE: </strong>{{ laman.company.catchPhrase }}</div>
-      <div class="name"><strong>BS : </strong>{{ laman.company.bs }}</div>
-    </li>
-  </ul>
-</h1>
-
+<nav>
 <img [src]="angularLogo" alt="" (click)="enableTheDisable()">
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="myClickEvent()">
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voicemail</span>
+  </button>
+  <button mat-menu-item (click)="sidenav.open()">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>
+<h1 [style.color]="titleStyle ? 'white' : 'pink'" >
+  {{title}}
+</h1>
+<div class="button-row end">
+  <button mat-button>Basic</button>
+  <button mat-button color="primary">Primary</button>
+  <button mat-button color="accent">Accent</button>
+  <button mat-button color="warn">Warn</button>
+  <button mat-button disabled>Disabled</button>
+  <a mat-button routerLink=".">Link</a>
+</div>
+</nav>
 
-<button [ngStyle]="objectStyle" [disabled]="testTr" (click)="myClickEvent()">Regular Button</button>
+<div class="sidenav">
+  <mat-sidenav-container class="example-container">
 
-<button [class]="objectClass" [disabled]="testTr" (click)="myClickEvent()">Far Button</button>
+    <mat-sidenav #sidenav class="example-sidenav">
+      <mat-list>
+        <mat-list-item>Item 1</mat-list-item>
+        <mat-list-item>Item 2</mat-list-item>
+        <mat-list-item>Item 3</mat-list-item>
+    </mat-list>
+    </mat-sidenav>
 
-<button [ngClass]="objectClasses" [disabled]="testTr" (click)="myClickEvent()">BIG BUTTON</button>
+    <!-- <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="sidenav.open()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div> -->
 
-
-
-<ul>
-  <li>{{myObject.gender}}</li>
-  <li>{{myObject.age}}</li>
-  <li>{{myObject.location}}</li>
-</ul>
-
-<p>
-  <strong [class]="hobbitsShire">{{ propers }}</strong>
-</p>
-
-<ul>
-  <li *ngFor="let arr of myArr2">{{ arr.gender }} {{arr.age}} {{arr.location}}</li>
-</ul>
+    <div class="contents">
 
 
+      <h2 [class]="hobbitsShire">{{ propers }}</h2>
 
-<ul>
-  <li *ngFor="let hobbit of hobbits">{{ hobbit }}</li>
-</ul>
+      <mat-form-field>
+       <input matInput placeholder="Insert your ID number here" type="number" [(ngModel)]="idUser" (keyup.enter)="returnOfTheKing()">
+      </mat-form-field>
 
-<div *ngIf="!myArr">Yeah my Arr exist!</div>
+      <div *ngIf="errorStatus" class="ErrorStatus">
+        <img style="width: 200px;" src="http://cdn.hitfix.com/photos/6257188/Itballoon.jpg" alt="">
+      </div>
+      <!-- <ul>
+        <li *ngFor="let laman of ninjas">
+          <div class="name"><strong>ID:</strong> {{ laman.id }}</div>
+          <div class="name"><strong>NAME:</strong> {{ laman.name }}</div>
+          <div class="name"><strong>USERNAME:</strong> {{ laman.username }}</div>
+          <div class="name"><strong>EMAIL:</strong> <a href="mailto: {{laman.email}}">{{ laman.email }}</a></div>
+          <div class="name"><strong>ADDRESS:</strong> {{ laman.address.street }} , {{ laman.address.suite }}, {{ laman.address.city }}, {{ laman.address.zipcode }}</div>
+          <div class="name"><strong>PHONE:</strong> {{ laman.phone }}</div>
+          <div class="name"><strong>WEBSITE:</strong> {{ laman.website }}</div>
+          <div class="name"><strong>COMPANY: </strong>{{ laman.company.name }}</div>
+          <div class="name"><strong>CATCHPHRASE: </strong>{{ laman.company.catchPhrase }}</div>
+          <div class="name"><strong>BS : </strong>{{ laman.company.bs }}</div>
+        </li>
+      </ul> -->
 
-<div *ngIf="booleanCheck == 'something'">Yeah Boolean is true!</div>
+      <mat-card class="example-card" *ngFor="let laman of ninjas">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"><img src="https://s9.postimg.org/99ae5g1bz/Joker_-_Avatar.jpg" alt=""></div>
+          <mat-card-title><strong>NAME:</strong> {{ laman.name }}</mat-card-title>
+          <mat-card-subtitle><strong>USERNAME:</strong> {{ laman.username }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="name"><strong>EMAIL:</strong> <a href="mailto: {{laman.email}}">{{ laman.email }}</a></div>
+          <div class="name"><strong>ADDRESS:</strong> {{ laman.address.street }} , {{ laman.address.suite }}, {{ laman.address.city }}, {{ laman.address.zipcode }}</div>
+          <div class="name"><strong>PHONE:</strong> {{ laman.phone }}</div>
+          <div class="name"><strong>WEBSITE:</strong> {{ laman.website }}</div>
+          <div class="name"><strong>COMPANY: </strong>{{ laman.company.name }}</div>
+          <div class="name"><strong>CATCHPHRASE: </strong>{{ laman.company.catchPhrase }}</div>
+          <div class="name"><strong>BS : </strong>{{ laman.company.bs }}</div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
 
-<div *ngIf="testTr; then newGandalf else oldGandalf">Yeah Boolean is true!</div>
+      <ul>
+        <li>{{myObject.gender}}</li>
+        <li>{{myObject.age}}</li>
+        <li>{{myObject.location}}</li>
+      </ul>
 
-<ng-template #newGandalf>You shall pass!</ng-template>
 
-<ng-template #oldGandalf>You shall not pass!</ng-template>
 
-<p class="vegeta" [@triggeredAnimation]='state' (click)="runAnimate()">BOOM! Animation</p>
 
-<app-new-component></app-new-component>
+
+      <ul>
+        <li *ngFor="let arr of myArr2">{{ arr.gender }} {{arr.age}} {{arr.location}}</li>
+      </ul>
+
+
+
+      <ul>
+        <li *ngFor="let hobbit of hobbits">{{ hobbit }}</li>
+      </ul>
+
+      <div *ngIf="!myArr">Yeah my Arr exist!</div>
+
+      <div *ngIf="booleanCheck == 'something'">Yeah Boolean is true!</div>
+
+      <div *ngIf="testTr; then newGandalf else oldGandalf">Yeah Boolean is true!</div>
+
+      <ng-template #newGandalf>You shall pass!</ng-template>
+
+      <ng-template #oldGandalf>You shall not pass!</ng-template>
+
+      <p class="vegeta" [@triggeredAnimation]='state' (click)="runAnimate()">BOOM! Animation</p>
+
+      <app-new-component></app-new-component>
+    </div>
+  </mat-sidenav-container>
+</div>
