@@ -26,7 +26,9 @@
   <button mat-button color="accent">Accent</button>
   <button mat-button color="warn">Warn</button>
   <button mat-button disabled>Disabled</button>
-  <a mat-button routerLink=".">Link</a>
+  <a mat-button routerLink="/new" routerLinkActive="active">New Component</a>
+  <a mat-button routerLink="/directory" routerLinkActive="active">Directory Component</a>
+  <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
 </div>
 </nav>
 
@@ -34,11 +36,15 @@
   <mat-sidenav-container class="example-container">
 
     <mat-sidenav #sidenav class="example-sidenav">
+
       <mat-list>
+
         <mat-list-item>Item 1</mat-list-item>
         <mat-list-item>Item 2</mat-list-item>
         <mat-list-item>Item 3</mat-list-item>
+        <mat-list-item>Item 4</mat-list-item>
     </mat-list>
+
     </mat-sidenav>
 
     <!-- <div class="example-sidenav-content">
@@ -48,10 +54,19 @@
     </div> -->
 
     <div class="contents">
-
-
+      <!-- <router-outlet></router-outlet> -->
       <h2 [class]="hobbitsShire">{{ propers }}</h2>
+      <div *ngIf="testTr; then newGandalf else oldGandalf">Yeah Boolean is true!</div><br>
 
+      <ng-template #newGandalf>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/mJZZNHekEQw?autoplay=1" frameborder="0" allowfullscreen></iframe>
+      </ng-template>
+
+      <ng-template #oldGandalf>You shall not pass!</ng-template>
+
+
+
+      <router-outlet></router-outlet>
       <mat-form-field>
        <input matInput placeholder="Insert your ID number here" type="number" [(ngModel)]="idUser" (keyup.enter)="returnOfTheKing()">
       </mat-form-field>
@@ -119,15 +134,12 @@
 
       <div *ngIf="booleanCheck == 'something'">Yeah Boolean is true!</div>
 
-      <div *ngIf="testTr; then newGandalf else oldGandalf">Yeah Boolean is true!</div>
-
-      <ng-template #newGandalf>You shall pass!</ng-template>
-
-      <ng-template #oldGandalf>You shall not pass!</ng-template>
 
       <p class="vegeta" [@triggeredAnimation]='state' (click)="runAnimate()">BOOM! Animation</p>
 
-      <app-new-component></app-new-component>
+      <!-- <app-new-component></app-new-component>
+      <app-directory></app-directory> -->
+
     </div>
   </mat-sidenav-container>
 </div>

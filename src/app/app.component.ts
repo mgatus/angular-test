@@ -43,9 +43,11 @@ export class AppComponent {
     this.hobbits = this.dataService.hobbits
     this.propers = this.dataService.myData();
 
+
+
   }
 
-  title = 'Angular Lab';
+  title = 'app works!';
 
   myObject = {
     gender: 'male',
@@ -111,7 +113,7 @@ export class AppComponent {
       }
     }, error => {
       this.ninjas = [];
-      this.errorStatus = true;
+      alert('Add valid input dummy!');
     });
   }
 
