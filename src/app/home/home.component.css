@@ -1,0 +1,58 @@
+h1 {
+  color: red
+}
+
+.maincolor {
+  color: #3f51b5
+}
+
+.objectClass {
+  background: red;
+  border-radius: 8px;
+  color: white;
+  float: right;
+  padding: 10px;
+  border: none;
+}
+
+.redColor {
+  color: red;
+}
+
+.largeTitle {
+  font-size: 2rem;
+}
+
+.hobbitsShire {
+  font-size: 2.2rem;
+  margin: 1% 0
+}
+
+.vegeta {
+  background: grey;
+  color: #fff;
+  padding: 15px;
+  margin: 2% 0;
+}
+
+.example-header-image img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.mat-card-content .name {
+  padding: 2% 0
+}
+
+.mat-card-content .name a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+.example-card {
+  width: 512px;
+}
+
+.super-saiyan {
+  font-size: 1.5rem;
+}

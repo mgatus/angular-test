@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { CustomOption } from './custom-option';
+import {ToastOptions} from 'ng2-toastr';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { DirectoryComponent } from  './directory/directory.component';
-
 import { NewComponentComponent } from './new-component/new-component.component';
 
 import { DataService } from './data.service';
@@ -36,6 +40,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     NewComponentComponent,
     DirectoryComponent
   ],
@@ -53,12 +58,14 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
     MatCardModule,
-    RouterModule.forRoot(routes)
+    AngularFontAwesomeModule,
+    RouterModule.forRoot(routes),
+    ToastModule.forRoot()
   ],
   exports: [
     RouterModule
   ],
-  providers: [DataService],
+  providers: [DataService, {provide: ToastOptions, useClass: CustomOption}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
